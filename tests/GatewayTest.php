@@ -10,6 +10,7 @@ use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPagePreprocessRe
 use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPageResultsRequest;
 use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\PurchaseRequest;
 use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\TransactionModificationRequest;
+use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\TransactionStatusRequest;
 use Omnipay\Tests\GatewayTestCase;
 
 class GatewayTest extends GatewayTestCase
@@ -153,5 +154,15 @@ class GatewayTest extends GatewayTestCase
 
         self::assertInstanceOf(HostedPageResultsRequest::class, $request);
         self::assertSame('_JBfLQJNiEmFBtnF3AfoeQ2', $request->getData()['string']);
+    }
+
+    public function testFetchTransaction(): void
+    {
+        $request = $this->gateway->fetchTransaction([
+            'transactionId' => '1234',
+        ]);
+
+        self::assertInstanceOf(TransactionStatusRequest::class, $request);
+        self::assertSame('1234', $request->getData()['OrderNumber']);
     }
 }
