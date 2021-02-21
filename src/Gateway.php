@@ -1,0 +1,63 @@
+<?php
+
+namespace Omnipay\OmnipayFirstAtlanticCommerce;
+
+use Omnipay\Common\AbstractGateway;
+use Omnipay\Common\Message\RequestInterface;
+use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\AuthorizeRequest;
+use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPagePreprocessRequest;
+use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPageResultsRequest;
+use Omnipay\OmnipayFirstAtlanticCommerce\Traits\ParameterTrait;
+
+/**
+ * @method \Omnipay\Common\Message\NotificationInterface acceptNotification(array $options = array())
+ * @method RequestInterface completeAuthorize(array $options = array())
+ * @method RequestInterface capture(array $options = array())
+ * @method RequestInterface purchase(array $options = array())
+ * @method RequestInterface completePurchase(array $options = array())
+ * @method RequestInterface refund(array $options = array())
+ * @method RequestInterface fetchTransaction(array $options = [])
+ * @method RequestInterface void(array $options = array())
+ * @method RequestInterface createCard(array $options = array())
+ * @method RequestInterface updateCard(array $options = array())
+ * @method RequestInterface deleteCard(array $options = array())
+ */
+class Gateway extends AbstractGateway
+{
+    use ParameterTrait;
+
+    public function getName(): string
+    {
+        return 'First Atlantic Commerce.';
+    }
+
+    public function getShortName(): string
+    {
+        return 'FAC';
+    }
+
+    public function getDefaultParameters(): array
+    {
+        return [
+            'merchantId' => null,
+            'merchantPassword' => null,
+            'acquirerId' => '464748',
+            'testMode' => false,
+        ];
+    }
+
+    public function authorize(array $options = []): RequestInterface
+    {
+        return $this->createRequest(AuthorizeRequest::class, $options);
+    }
+
+    public function hostedPage(array $options): RequestInterface
+    {
+        return $this->createRequest(HostedPagePreprocessRequest::class, $options);
+    }
+
+    public function hostedPageResult(array $options): RequestInterface
+    {
+        return $this->createRequest(HostedPageResultsRequest::class, $options);
+    }
+}

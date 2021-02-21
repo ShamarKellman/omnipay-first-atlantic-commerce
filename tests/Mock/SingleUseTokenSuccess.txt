@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: text/html
+Server:
+X-AspNet-Version: 4.0.30319
+Content-Security-Policy: default-src https: 'unsafe-eval' 'unsafe-inline'
+Strict-Transport-Security: max-age=31536000; includeSubdomains=true
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: no-referrer-when-downgrade
+Date: Wed, 27 Nov 2019 18:22:15 GMT
+Content-Length: 317
+
+<HostedPagePreprocessResponse xmlns="http://schemas.firstatlanticcommerce.com/gateway/data" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <ResponseCode>0</ResponseCode>
+    <ResponseCodeDescription>Success</ResponseCodeDescription>
+    <SecurityToken>AzXrogQb5E2aEJDWsyEaw2</SecurityToken>
+</HostedPagePreprocessResponse>
