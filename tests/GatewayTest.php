@@ -98,6 +98,36 @@ class GatewayTest extends GatewayTestCase
 
     }
 
+    public function testRefund(): void
+    {
+        $request = $this->gateway->refund([
+            'amount' => '10.00',
+            'currency' => 'USD',
+            'transactionId' => '1234',
+        ]);
+
+        self::assertInstanceOf(TransactionModificationRequest::class, $request);
+        self::assertSame('000000001000', $request->getData()['Amount']);
+        self::assertSame('840', $request->getData()['Currency']);
+        self::assertSame(ModificationType::REFUND, $request->getData()['ModificationType']);
+
+    }
+
+    public function testReversal(): void
+    {
+        $request = $this->gateway->void([
+            'amount' => '10.00',
+            'currency' => 'USD',
+            'transactionId' => '1234',
+        ]);
+
+        self::assertInstanceOf(TransactionModificationRequest::class, $request);
+        self::assertSame('000000001000', $request->getData()['Amount']);
+        self::assertSame('840', $request->getData()['Currency']);
+        self::assertSame(ModificationType::REVERSAL, $request->getData()['ModificationType']);
+
+    }
+
     public function testHostedPage(): void
     {
         $request = $this->gateway->hostedPage([
