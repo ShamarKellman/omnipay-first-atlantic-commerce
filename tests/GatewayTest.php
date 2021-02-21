@@ -2,10 +2,12 @@
 
 namespace Omnipay\OmnipayFirstAtlanticCommerce\Tests;
 
+use Omnipay\OmnipayFirstAtlanticCommerce\CreditCard;
 use Omnipay\OmnipayFirstAtlanticCommerce\Enums\ModificationType;
 use Omnipay\OmnipayFirstAtlanticCommerce\Enums\TransactionCode;
 use Omnipay\OmnipayFirstAtlanticCommerce\Gateway;
 use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\AuthorizeRequest;
+use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\CreateCardRequest;
 use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPagePreprocessRequest;
 use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPageResultsRequest;
 use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\PurchaseRequest;
@@ -81,7 +83,6 @@ class GatewayTest extends GatewayTestCase
         self::assertSame('000000001000', $request->getData()['TransactionDetails']['Amount']);
         self::assertSame('840', $request->getData()['TransactionDetails']['Currency']);
         self::assertSame(136, $request->getData()['TransactionDetails']['TransactionCode']);
-
     }
 
     public function testCapture(): void
@@ -96,7 +97,6 @@ class GatewayTest extends GatewayTestCase
         self::assertSame('000000001000', $request->getData()['Amount']);
         self::assertSame('840', $request->getData()['Currency']);
         self::assertSame(ModificationType::CAPTURE, $request->getData()['ModificationType']);
-
     }
 
     public function testRefund(): void
@@ -111,7 +111,6 @@ class GatewayTest extends GatewayTestCase
         self::assertSame('000000001000', $request->getData()['Amount']);
         self::assertSame('840', $request->getData()['Currency']);
         self::assertSame(ModificationType::REFUND, $request->getData()['ModificationType']);
-
     }
 
     public function testReversal(): void
@@ -126,7 +125,6 @@ class GatewayTest extends GatewayTestCase
         self::assertSame('000000001000', $request->getData()['Amount']);
         self::assertSame('840', $request->getData()['Currency']);
         self::assertSame(ModificationType::REVERSAL, $request->getData()['ModificationType']);
-
     }
 
     public function testHostedPage(): void
@@ -164,5 +162,35 @@ class GatewayTest extends GatewayTestCase
 
         self::assertInstanceOf(TransactionStatusRequest::class, $request);
         self::assertSame('1234', $request->getData()['OrderNumber']);
+    }
+
+    public function testCreateCard(): void
+    {
+        $request = $this->gateway->createCard([
+            'card' => $this->getValidCard(),
+            'customerReference' => '1234567',
+        ]);
+
+        self::assertInstanceOf(CreateCardRequest::class, $request);
+        self::assertSame('1234567', $request->getData()['CustomerReference']);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function testUpdateCard(): void
+    {
+        $request = $this->gateway->createCard([
+            'card' => new CreditCard([
+                'number' => '411111_000011111',
+                'expiryMonth' => random_int(1, 12),
+                'expiryYear' => gmdate('Y') + random_int(1, 5),
+            ]),
+            'customerReference' => '1234567',
+            'cardReference' => '411111_000011111',
+        ]);
+
+        self::assertInstanceOf(CreateCardRequest::class, $request);
+        self::assertSame('1234567', $request->getData()['CustomerReference']);
     }
 }
