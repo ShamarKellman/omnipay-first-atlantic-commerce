@@ -41,6 +41,37 @@ $cardData = [
     'cvv' => '123'
 ];
 
+$response = $gateway->authorize([
+    'createCard' => true, //optional - Will return tokenized card if included
+    'amount' => '10.00',
+    'currency' => 'USD',
+    'transactionId' => '1234',
+    'card' => $cardData,
+    'testMode' => true //use for calls to FAC sandbox
+])->send();
+
+if ( $response->isSuccessful() ) {
+    print_r($response);
+}
+else {
+    echo $response->getMessage();
+}
+
+```
+### Single Pass Purchase Request
+
+```php
+$gateway = Omnipay::create('FirstAtlanticCommerce');
+$gateway->setMerchantId('123456789');
+$gateway->setMerchantPassword('abc123');
+
+$cardData = [
+    'number' => '4242424242424242',
+    'expiryMonth' => '6',
+    'expiryYear' => '2016',
+    'cvv' => '123'
+];
+
 $response = $gateway->purchase([
     'createCard' => true, //optional - Will return tokenized card if included
     'amount' => '10.00',

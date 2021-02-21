@@ -7,6 +7,7 @@ use Omnipay\OmnipayFirstAtlanticCommerce\Gateway;
 use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\AuthorizeRequest;
 use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPagePreprocessRequest;
 use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPageResultsRequest;
+use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\PurchaseRequest;
 use Omnipay\Tests\GatewayTestCase;
 
 class GatewayTest extends GatewayTestCase
@@ -46,6 +47,38 @@ class GatewayTest extends GatewayTestCase
         self::assertInstanceOf(AuthorizeRequest::class, $request);
         self::assertSame('000000001000', $request->getData()['TransactionDetails']['Amount']);
         self::assertSame('840', $request->getData()['TransactionDetails']['Currency']);
+    }
+
+    public function testPurchase(): void
+    {
+        $request = $this->gateway->purchase([
+            'amount' => '10.00',
+            'currency' => 'USD',
+            'transactionId' => '1234',
+            'card' => $this->getValidCard(),
+        ]);
+
+        self::assertInstanceOf(PurchaseRequest::class, $request);
+        self::assertSame('000000001000', $request->getData()['TransactionDetails']['Amount']);
+        self::assertSame('840', $request->getData()['TransactionDetails']['Currency']);
+        self::assertSame(8, $request->getData()['TransactionDetails']['TransactionCode']);
+    }
+
+    public function testPurchaseWithCreateCard(): void
+    {
+        $request = $this->gateway->purchase([
+            'amount' => '10.00',
+            'currency' => 'USD',
+            'transactionId' => '1234',
+            'card' => $this->getValidCard(),
+            'createCard' => true,
+        ]);
+
+        self::assertInstanceOf(PurchaseRequest::class, $request);
+        self::assertSame('000000001000', $request->getData()['TransactionDetails']['Amount']);
+        self::assertSame('840', $request->getData()['TransactionDetails']['Currency']);
+        self::assertSame(136, $request->getData()['TransactionDetails']['TransactionCode']);
+
     }
 
     public function testHostedPage(): void

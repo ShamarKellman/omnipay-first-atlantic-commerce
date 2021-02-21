@@ -4,31 +4,16 @@ namespace Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests;
 
 use Omnipay\OmnipayFirstAtlanticCommerce\Enums\TransactionCode;
 use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\AuthorizeResponse;
+use Omnipay\OmnipayFirstAtlanticCommerce\Traits\GeneratesSignature;
 use Omnipay\OmnipayFirstAtlanticCommerce\Traits\ParameterTrait;
 use SimpleXMLElement;
 
 class AuthorizeRequest extends AbstractRequest
 {
     use ParameterTrait;
+    use GeneratesSignature;
 
     protected string $requestName = 'AuthorizeRequest';
-
-    /**
-     * @return string
-     *
-     * @throws \Omnipay\Common\Exception\InvalidRequestException
-     */
-    protected function generateSignature(): string
-    {
-        $signature = $this->getMerchantPassword();
-        $signature .= $this->getMerchantId();
-        $signature .= $this->getAcquirerId();
-        $signature .= $this->getTransactionId();
-        $signature .= $this->formatAmount();
-        $signature .= $this->getCurrencyNumeric();
-
-        return base64_encode(sha1($signature, true));
-    }
 
     /**
      * @param  SimpleXMLElement|string  $xml

@@ -7,13 +7,13 @@ use Omnipay\Common\Message\RequestInterface;
 use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\AuthorizeRequest;
 use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPagePreprocessRequest;
 use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPageResultsRequest;
+use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\PurchaseRequest;
 use Omnipay\OmnipayFirstAtlanticCommerce\Traits\ParameterTrait;
 
 /**
  * @method \Omnipay\Common\Message\NotificationInterface acceptNotification(array $options = array())
  * @method RequestInterface completeAuthorize(array $options = array())
  * @method RequestInterface capture(array $options = array())
- * @method RequestInterface purchase(array $options = array())
  * @method RequestInterface completePurchase(array $options = array())
  * @method RequestInterface refund(array $options = array())
  * @method RequestInterface fetchTransaction(array $options = [])
@@ -49,6 +49,11 @@ class Gateway extends AbstractGateway
     public function authorize(array $options = []): RequestInterface
     {
         return $this->createRequest(AuthorizeRequest::class, $options);
+    }
+
+    public function purchase(array $options): RequestInterface
+    {
+        return $this->createRequest(PurchaseRequest::class, $options);
     }
 
     public function hostedPage(array $options): RequestInterface

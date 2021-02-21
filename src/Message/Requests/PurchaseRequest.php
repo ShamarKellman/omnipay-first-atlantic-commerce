@@ -2,36 +2,38 @@
 
 namespace Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests;
 
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\HostedPageAuthorizationResponse;
+use Omnipay\OmnipayFirstAtlanticCommerce\Enums\TransactionCode;
+use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\PurchaseResponse;
 use Omnipay\OmnipayFirstAtlanticCommerce\Traits\GeneratesSignature;
 use Omnipay\OmnipayFirstAtlanticCommerce\Traits\ParameterTrait;
 use SimpleXMLElement;
 
-class HostedPagePreprocessRequest extends AbstractRequest
+class PurchaseRequest extends AbstractRequest
 {
     use ParameterTrait;
     use GeneratesSignature;
 
-    protected string $requestName = 'HostedPagePreprocessRequest';
+    protected string $requestName = 'AuthorizeRequest';
 
     /**
      * @param  SimpleXMLElement|string  $xml
-     * @return HostedPageAuthorizationResponse
+     * @return PurchaseResponse
      * @throws \Omnipay\Common\Exception\InvalidRequestException
      * @throws \Omnipay\Common\Exception\InvalidResponseException
      */
-    protected function newResponse($xml): HostedPageAuthorizationResponse
+    protected function newResponse($xml): PurchaseResponse
     {
-        return new HostedPageAuthorizationResponse($this, $xml);
+        return new PurchaseResponse($this, $xml);
     }
 
     /**
      * @return array
      * @throws \Omnipay\Common\Exception\InvalidRequestException
+     * @throws \Omnipay\Common\Exception\InvalidCreditCardException
      */
     public function getData(): array
     {
-        $this->validate('merchantId', 'merchantPassword', 'acquirerId', 'transactionId', 'amount', 'currency', 'cardHolderResponseURL', 'transactionCode');
+        $this->validate('merchantId', 'merchantPassword', 'acquirerId', 'transactionId', 'amount', 'currency', 'card');
 
         $transactionDetails = [
             'AcquirerId' => $this->getAcquirerId(),
@@ -46,29 +48,35 @@ class HostedPagePreprocessRequest extends AbstractRequest
             'TransactionCode' => $this->getTransactionCode(),
         ];
 
+        $this->getCard()->validate();
+
+        $cardDetails = [
+            'CardCVV2' => $this->getCard()->getCvv(),
+            'CardExpiryDate' => $this->getCard()->getExpiryDate('my'),
+            'CardNumber' => $this->getCard()->getNumber(),
+            'IssueNumber' => $this->getCard()->getIssueNumber(),
+        ];
+
         return [
-            'CardHolderResponseURL' => $this->getCardHolderResponseURL(),
             'TransactionDetails' => $transactionDetails,
+            'CardDetails' => $cardDetails,
         ];
     }
 
-    public function getCardHolderResponseURL()
+    public function getTransactionCode(): int
     {
-        return $this->getParameter('cardHolderResponseURL');
+        return $this->getCreateCard() ?
+            (TransactionCode::REQUEST_TOKEN + TransactionCode::SINGLE_PASS) :
+            TransactionCode::SINGLE_PASS;
     }
 
-    public function setCardHolderResponseURL(string $value): HostedPagePreprocessRequest
+    public function setCreateCard($value): PurchaseRequest
     {
-        return $this->setParameter('cardHolderResponseURL', $value);
+        return $this->setParameter('createCard', $value);
     }
 
-    public function getTransactionCode()
+    public function getCreateCard()
     {
-        return $this->getParameter('transactionCode');
-    }
-
-    public function setTransactionCode(string $value): HostedPagePreprocessRequest
-    {
-        return $this->setParameter('transactionCode', $value);
+        return $this->getParameter('createCard');
     }
 }
