@@ -33,6 +33,7 @@ composer require shamarkellman/omnipay-first-atlantic-commerce
 $gateway = Omnipay::create('FirstAtlanticCommerce');
 $gateway->setMerchantId('123456789');
 $gateway->setMerchantPassword('abc123');
+$gateway->setAcquirerId(12345);
 
 $cardData = [
     'number' => '4242424242424242',
@@ -58,12 +59,14 @@ else {
 }
 
 ```
+
 ### Single Pass Purchase Request
 
 ```php
 $gateway = Omnipay::create('FirstAtlanticCommerce');
 $gateway->setMerchantId('123456789');
 $gateway->setMerchantPassword('abc123');
+$gateway->setAcquirerId(12345);
 
 $cardData = [
     'number' => '4242424242424242',
@@ -89,6 +92,31 @@ else {
 }
 
 ```
+### Capture Previous Transaction
+
+```php
+$gateway = Omnipay::create('FirstAtlanticCommerce');
+$gateway->setMerchantId('123456789');
+$gateway->setMerchantPassword('abc123');
+$gateway->setAcquirerId(12345);
+
+$response = $this->gateway->capture([
+    'amount' => '10.00',
+    'currency' => 'USD',
+    'transactionId' => '1234',
+])->send();
+
+if ( $response->isSuccessful() ) {
+    $response->getCode();
+    $response->getResponseCode();
+    $response->getMessage();
+    $response->getOriginalResponseCode();
+}
+else {
+    echo $response->getMessage();
+}
+
+```
 
 ### Hosted Page Request
 
@@ -96,6 +124,7 @@ else {
 $gateway = Omnipay::create('FirstAtlanticCommerce');
 $gateway->setMerchantId('123456789');
 $gateway->setMerchantPassword('abc123');
+$gateway->setAcquirerId(12345);
 
 $response = $this->gateway->hostedPage([
     'amount' => '10.00',
@@ -121,6 +150,7 @@ This returns the payment data for the hosted payment
 $gateway = Omnipay::create('FirstAtlanticCommerce');
 $gateway->setMerchantId('123456789');
 $gateway->setMerchantPassword('abc123');
+$gateway->setAcquirerId(12345);
 
 $response = $this->gateway->hostedPageResult([
     'token' => '_JBfLQJNiEmFBtnF3AfoeQ2', //token is provided returned in callback after completes hosted page
