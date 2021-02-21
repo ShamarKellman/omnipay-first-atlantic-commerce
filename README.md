@@ -59,6 +59,54 @@ else {
 
 ```
 
+### Hosted Page Request
+
+```php
+$gateway = Omnipay::create('FirstAtlanticCommerce');
+$gateway->setMerchantId('123456789');
+$gateway->setMerchantPassword('abc123');
+
+$response = $this->gateway->hostedPage([
+    'amount' => '10.00',
+    'currency' => 'USD',
+    'transactionId' => '1234',
+    'transactionCode' => TransactionCode::SINGLE_PASS + TransactionCode::REQUEST_TOKEN, //Use values based on requirements 
+    'cardHolderResponseURL' => 'https://merchant/response/page.php',
+])->send();
+
+if ( $response->isSuccessful() ) {
+    $response->getToken(); //the single use token to build hosted page URL. See doc
+}
+else {
+    echo $response->getCode();
+    echo $response->getMessage();
+}
+```
+
+### Hosted Page Result Request
+This returns the payment data for the hosted payment 
+
+```php
+$gateway = Omnipay::create('FirstAtlanticCommerce');
+$gateway->setMerchantId('123456789');
+$gateway->setMerchantPassword('abc123');
+
+$response = $this->gateway->hostedPageResult([
+    'token' => '_JBfLQJNiEmFBtnF3AfoeQ2', //token is provided returned in callback after completes hosted page
+]);
+
+if ( $response->isSuccessful() ) {
+    echo $response->getResponseCode();
+    echo $response->getMessage();
+    echo $response->getTransactionId();
+    echo $response->getCardReference(); //if tokenization was requested
+}
+else {
+    echo $response->getCode();
+    echo $response->getMessage();
+}
+```
+
 ## Testing
 
 ```bash
