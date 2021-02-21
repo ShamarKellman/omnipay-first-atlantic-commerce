@@ -11,7 +11,7 @@
          verbose="true"
 >
     <testsuites>
-        <testsuite name="Spatie Test Suite">
+        <testsuite name="Shamarkellman Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
@@ -28,4 +28,9 @@
     <logging>
         <junit outputFile="build/report.junit.xml"/>
     </logging>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+        </whitelist>
+    </filter>
 </phpunit>

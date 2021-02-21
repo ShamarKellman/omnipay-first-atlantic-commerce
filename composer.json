@@ -1,40 +1,41 @@
 {
-    "name": ":vendor_name/:package_name",
-    "description": ":package_description",
+    "name": "shamarkellman/omnipay-first-atlantic-commerce",
+    "description": "omnipay-first-atlantic-commerce",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "shamarkellman",
+        "omnipay-first-atlantic-commerce"
     ],
-    "homepage": "https://github.com/:vendor_name/:package_name",
+    "homepage": "https://github.com/shamarkellman/omnipay-first-atlantic-commerce",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "Shamar Kellman",
+            "email": "shamarkellman@hotmail.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.4|^8.0"
+        "php": "^7.4|^8.0",
+        "dasprid/enum": "^1.0.3",
+        "league/iso3166": "^3.0",
+        "omnipay/common": "^3.0",
+        "ext-simplexml": "*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.17",
-        "phpunit/phpunit": "^9.5",
-        "spatie/ray": "^1.10",
-        "vimeo/psalm": "^4.3"
+        "omnipay/tests": "^3.1"
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src"
+            "Omnipay\\OmnipayFirstAtlanticCommerce\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "Omnipay\\OmnipayFirstAtlanticCommerce\\Tests\\": "tests"
         }
     },
     "scripts": {
-        "psalm": "vendor/bin/psalm",
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
         "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"

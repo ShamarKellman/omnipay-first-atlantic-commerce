@@ -1,34 +1,62 @@
-# :package_description
+# Omnipay: First Atlantic Commerce
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_name/:package_name.svg?style=flat-square)](https://packagist.org/packages/:vendor_name/:package_name)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/:vendor_name/:package_name/Tests?label=tests)](https://github.com/:vendor_name/:package_name/actions?query=workflow%3ATests+branch%3Amaster)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_name/:package_name.svg?style=flat-square)](https://packagist.org/packages/:vendor_name/:package_name)
+First Atlantic Commerce driver for the Omnipay PHP payment processing library
 
-**Note:** Run `./configure-skeleton` to get started, or manually replace ```:author_name``` ```:author_username``` ```:author_email``` ```:vendor_name``` ```:package_name``` ```:package_description``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](.github/CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line. 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/shamarkellman/omnipay-first-atlantic-commerce.svg?style=flat-square)](https://packagist.org/packages/shamarkellman/omnipay-first-atlantic-commerce)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/shamarkellman/omnipay-first-atlantic-commerce/Tests?label=tests)](https://github.com/shamarkellman/omnipay-first-atlantic-commerce/actions?query=workflow%3ATests+branch%3Amaster)
+[![Total Downloads](https://img.shields.io/packagist/dt/shamarkellman/omnipay-first-atlantic-commerce.svg?style=flat-square)](https://packagist.org/packages/shamarkellman/omnipay-first-atlantic-commerce)
 
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+Omnipay is a framework agnostic, multi-gateway payment processing library for PHP. This package implements First
+Atlantic Commerce support for Omnipay.
 
 ## Support us
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/package-skeleton-php.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/package-skeleton-php)
+We invest a lot of resources into creating opensource products.
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
+You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards
+on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require :vendor_name/:package_name
+composer require shamarkellman/omnipay-first-atlantic-commerce
 ```
 
 ## Usage
 
+### Authorize Request
+
 ```php
-$skeleton = new Spatie\Skeleton();
-echo $skeleton->echoPhrase('Hello, Spatie!');
+$gateway = Omnipay::create('FirstAtlanticCommerce');
+$gateway->setMerchantId('123456789');
+$gateway->setMerchantPassword('abc123');
+
+$cardData = [
+    'number' => '4242424242424242',
+    'expiryMonth' => '6',
+    'expiryYear' => '2016',
+    'cvv' => '123'
+];
+
+$response = $gateway->purchase([
+    'createCard' => true, //optional - Will return tokenized card if included
+    'amount' => '10.00',
+    'currency' => 'USD',
+    'transactionId' => '1234',
+    'card' => $cardData,
+    'testMode' => true //use for calls to FAC sandbox
+])->send();
+
+if ( $response->isSuccessful() ) {
+    print_r($response);
+}
+else {
+    echo $response->getMessage();
+}
+
 ```
 
 ## Testing
@@ -51,7 +79,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [Shamar Kellman](https://github.com/ShamarKellman)
 - [All Contributors](../../contributors)
 
 ## License
