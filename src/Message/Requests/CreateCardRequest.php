@@ -1,11 +1,11 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests;
+namespace Omnipay\FirstAtlanticCommerce\Message\Requests;
 
 use Omnipay\Common\Exception\InvalidResponseException;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\CreateCardResponse;
-use Omnipay\OmnipayFirstAtlanticCommerce\Traits\GeneratesSignature;
-use Omnipay\OmnipayFirstAtlanticCommerce\Traits\ParameterTrait;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\CreateCardResponse;
+use Omnipay\FirstAtlanticCommerce\Traits\GeneratesSignature;
+use Omnipay\FirstAtlanticCommerce\Traits\ParameterTrait;
 use SimpleXMLElement;
 
 class CreateCardRequest extends AbstractRequest
@@ -13,7 +13,7 @@ class CreateCardRequest extends AbstractRequest
     use ParameterTrait;
     use GeneratesSignature;
 
-    protected string $requestName = 'TokenizeRequest';
+    protected string $requestName = 'Tokenize';
 
     /**
      * @param  SimpleXMLElement|string  $xml

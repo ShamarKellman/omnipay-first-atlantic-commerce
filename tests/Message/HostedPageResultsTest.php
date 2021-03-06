@@ -1,9 +1,9 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Tests\Message;
+namespace Omnipay\FirstAtlanticCommerce\Tests\Message;
 
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPageResultsRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\HostedPageResultsResponse;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\HostedPageResultsRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\HostedPageResultsResponse;
 use Omnipay\Tests\TestCase;
 
 class HostedPageResultsTest extends TestCase

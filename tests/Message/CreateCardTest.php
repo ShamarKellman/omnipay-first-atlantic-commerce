@@ -1,9 +1,9 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Tests\Message;
+namespace Omnipay\FirstAtlanticCommerce\Tests\Message;
 
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\CreateCardRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\CreateCardResponse;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\CreateCardRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\CreateCardResponse;
 use Omnipay\Tests\TestCase;
 
 class CreateCardTest extends TestCase

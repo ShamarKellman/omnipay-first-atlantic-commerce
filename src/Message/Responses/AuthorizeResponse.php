@@ -1,9 +1,9 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses;
+namespace Omnipay\FirstAtlanticCommerce\Message\Responses;
 
 use Omnipay\Common\Exception\InvalidResponseException;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\AuthorizeRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\AuthorizeRequest;
 
 class AuthorizeResponse extends AbstractResponse
 {

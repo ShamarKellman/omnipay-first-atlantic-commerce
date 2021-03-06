@@ -1,10 +1,10 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Tests\Message;
+namespace Omnipay\FirstAtlanticCommerce\Tests\Message;
 
-use Omnipay\OmnipayFirstAtlanticCommerce\CreditCard;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\UpdateCardRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\UpdateCardResponse;
+use Omnipay\FirstAtlanticCommerce\CreditCard;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\UpdateCardRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\UpdateCardResponse;
 use Omnipay\Tests\TestCase;
 
 class UpdateCardTest extends TestCase

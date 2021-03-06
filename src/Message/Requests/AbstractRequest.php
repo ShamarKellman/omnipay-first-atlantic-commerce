@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests;
+namespace Omnipay\FirstAtlanticCommerce\Message\Requests;
 
 use Omnipay\Common\CreditCard;
 use \Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
@@ -40,7 +40,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
     {
         $httpResponse = $this->httpClient->request(
             $this->getHttpMethod(),
-            $this->getEndpoint(),
+            $this->getEndpoint().'Request',
             ['Content-Type' => 'text/xml; charset=utf-8'],
             $this->xmlSerialize($data)
         );

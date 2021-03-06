@@ -1,10 +1,10 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Tests\Message;
+namespace Omnipay\FirstAtlanticCommerce\Tests\Message;
 
-use Omnipay\OmnipayFirstAtlanticCommerce\Enums\TransactionCode;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPagePreprocessRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\HostedPageAuthorizationResponse;
+use Omnipay\FirstAtlanticCommerce\Enums\TransactionCode;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\HostedPagePreprocessRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\HostedPageAuthorizationResponse;
 use Omnipay\Tests\TestCase;
 
 class HostedPageTest extends TestCase

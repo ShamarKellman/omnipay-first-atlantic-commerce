@@ -1,10 +1,10 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Tests\Message;
+namespace Omnipay\FirstAtlanticCommerce\Tests\Message;
 
-use Omnipay\OmnipayFirstAtlanticCommerce\Enums\ModificationType;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\TransactionModificationRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\TransactionModificationResponse;
+use Omnipay\FirstAtlanticCommerce\Enums\ModificationType;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\TransactionModificationRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\TransactionModificationResponse;
 use Omnipay\Tests\TestCase;
 
 class TransactionModificationTest extends TestCase

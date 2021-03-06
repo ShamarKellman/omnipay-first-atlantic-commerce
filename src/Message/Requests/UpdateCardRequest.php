@@ -1,12 +1,13 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests;
+namespace Omnipay\FirstAtlanticCommerce\Message\Requests;
 
+use Omnipay\Common\Exception\InvalidCreditCardException;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Exception\InvalidResponseException;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\UpdateCardResponse;
-use Omnipay\OmnipayFirstAtlanticCommerce\Traits\GeneratesSignature;
-use Omnipay\OmnipayFirstAtlanticCommerce\Traits\ParameterTrait;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\UpdateCardResponse;
+use Omnipay\FirstAtlanticCommerce\Traits\GeneratesSignature;
+use Omnipay\FirstAtlanticCommerce\Traits\ParameterTrait;
 use SimpleXMLElement;
 
 class UpdateCardRequest extends AbstractRequest
@@ -14,7 +15,7 @@ class UpdateCardRequest extends AbstractRequest
     use ParameterTrait;
     use GeneratesSignature;
 
-    protected string $requestName = 'UpdateTokenRequest';
+    protected string $requestName = 'UpdateToken';
 
     /**
      * @param  SimpleXMLElement|string  $xml
@@ -28,7 +29,8 @@ class UpdateCardRequest extends AbstractRequest
 
     /**
      * @return array
-     * @throws InvalidRequestException|\Omnipay\Common\Exception\InvalidCreditCardException
+     * @throws InvalidRequestException|
+     * @throws InvalidCreditCardException
      */
     public function getData(): array
     {

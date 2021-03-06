@@ -1,17 +1,21 @@
 <?php
 
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests;
+namespace Omnipay\FirstAtlanticCommerce\Message\Requests;
 
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\HostedPageResultsResponse;
+use Omnipay\Common\Exception\InvalidRequestException;
+use Omnipay\Common\Exception\InvalidResponseException;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\HostedPageResultsResponse;
 use SimpleXMLElement;
 
 class HostedPageResultsRequest extends AbstractRequest
 {
-    protected string $requestName = 'HostedPageResultsRequest';
+    protected string $requestName = 'HostedPageResults';
 
     /**
      * @param  SimpleXMLElement|string  $xml
+     * @throws InvalidRequestException
+     * @throws InvalidResponseException
      * @return HostedPageResultsResponse
      */
     protected function newResponse($xml): HostedPageResultsResponse
@@ -21,7 +25,7 @@ class HostedPageResultsRequest extends AbstractRequest
 
     /**
      * @return mixed|void
-     * @throws \Omnipay\Common\Exception\InvalidRequestException
+     * @throws InvalidRequestException
      */
     public function getData(): array
     {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Tests\Message;
+namespace Omnipay\FirstAtlanticCommerce\Tests\Message;
 
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\AuthorizeRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\AuthorizeResponse;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\AuthorizeRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\AuthorizeResponse;
 use Omnipay\Tests\TestCase;
 
 class AuthorizeTest extends TestCase

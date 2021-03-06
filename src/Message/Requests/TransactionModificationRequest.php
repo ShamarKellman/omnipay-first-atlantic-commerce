@@ -1,19 +1,23 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests;
+namespace Omnipay\FirstAtlanticCommerce\Message\Requests;
 
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\TransactionModificationResponse;
-use Omnipay\OmnipayFirstAtlanticCommerce\Traits\ParameterTrait;
+use Omnipay\Common\Exception\InvalidRequestException;
+use Omnipay\Common\Exception\InvalidResponseException;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\TransactionModificationResponse;
+use Omnipay\FirstAtlanticCommerce\Traits\ParameterTrait;
 use SimpleXMLElement;
 
 class TransactionModificationRequest extends AbstractRequest
 {
     use ParameterTrait;
 
-    protected string $requestName = 'TransactionModificationRequest';
+    protected string $requestName = 'TransactionModification';
 
     /**
      * @param  SimpleXMLElement|string  $xml
+     * @throws InvalidRequestException
+     * @throws InvalidResponseException
      * @return TransactionModificationResponse
      */
     protected function newResponse($xml): TransactionModificationResponse
@@ -23,7 +27,7 @@ class TransactionModificationRequest extends AbstractRequest
 
     /**
      * @return array
-     * @throws \Omnipay\Common\Exception\InvalidRequestException
+     * @throws InvalidRequestException
      */
     public function getData(): array
     {

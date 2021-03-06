@@ -1,9 +1,9 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses;
+namespace Omnipay\FirstAtlanticCommerce\Message\Responses;
 
 use Omnipay\Common\Exception\InvalidResponseException;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPagePreprocessRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\HostedPagePreprocessRequest;
 
 class HostedPageAuthorizationResponse extends AbstractResponse
 {

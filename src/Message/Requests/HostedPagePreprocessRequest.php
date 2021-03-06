@@ -1,10 +1,12 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests;
+namespace Omnipay\FirstAtlanticCommerce\Message\Requests;
 
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\HostedPageAuthorizationResponse;
-use Omnipay\OmnipayFirstAtlanticCommerce\Traits\GeneratesSignature;
-use Omnipay\OmnipayFirstAtlanticCommerce\Traits\ParameterTrait;
+use Omnipay\Common\Exception\InvalidRequestException;
+use Omnipay\Common\Exception\InvalidResponseException;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\HostedPageAuthorizationResponse;
+use Omnipay\FirstAtlanticCommerce\Traits\GeneratesSignature;
+use Omnipay\FirstAtlanticCommerce\Traits\ParameterTrait;
 use SimpleXMLElement;
 
 class HostedPagePreprocessRequest extends AbstractRequest
@@ -12,13 +14,13 @@ class HostedPagePreprocessRequest extends AbstractRequest
     use ParameterTrait;
     use GeneratesSignature;
 
-    protected string $requestName = 'HostedPagePreprocessRequest';
+    protected string $requestName = 'HostedPagePreprocess';
 
     /**
      * @param  SimpleXMLElement|string  $xml
      * @return HostedPageAuthorizationResponse
-     * @throws \Omnipay\Common\Exception\InvalidRequestException
-     * @throws \Omnipay\Common\Exception\InvalidResponseException
+     * @throws InvalidRequestException
+     * @throws InvalidResponseException
      */
     protected function newResponse($xml): HostedPageAuthorizationResponse
     {
@@ -27,11 +29,20 @@ class HostedPagePreprocessRequest extends AbstractRequest
 
     /**
      * @return array
-     * @throws \Omnipay\Common\Exception\InvalidRequestException
+     * @throws InvalidRequestException
      */
     public function getData(): array
     {
-        $this->validate('merchantId', 'merchantPassword', 'acquirerId', 'transactionId', 'amount', 'currency', 'cardHolderResponseURL', 'transactionCode');
+        $this->validate(
+            'merchantId',
+            'merchantPassword',
+            'acquirerId',
+            'transactionId',
+            'amount',
+            'currency',
+            'cardHolderResponseURL',
+            'transactionCode',
+        );
 
         $transactionDetails = [
             'AcquirerId' => $this->getAcquirerId(),
