@@ -1,9 +1,9 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses;
+namespace Omnipay\FirstAtlanticCommerce\Message\Responses;
 
 use Omnipay\Common\Exception\InvalidResponseException;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\TransactionModificationRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\TransactionModificationRequest;
 
 class TransactionModificationResponse extends AbstractResponse
 {

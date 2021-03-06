@@ -1,18 +1,18 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Tests;
+namespace Omnipay\FirstAtlanticCommerce\Tests;
 
-use Omnipay\OmnipayFirstAtlanticCommerce\CreditCard;
-use Omnipay\OmnipayFirstAtlanticCommerce\Enums\ModificationType;
-use Omnipay\OmnipayFirstAtlanticCommerce\Enums\TransactionCode;
-use Omnipay\OmnipayFirstAtlanticCommerce\Gateway;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\AuthorizeRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\CreateCardRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPagePreprocessRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPageResultsRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\PurchaseRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\TransactionModificationRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\TransactionStatusRequest;
+use Omnipay\FirstAtlanticCommerce\CreditCard;
+use Omnipay\FirstAtlanticCommerce\Enums\ModificationType;
+use Omnipay\FirstAtlanticCommerce\Enums\TransactionCode;
+use Omnipay\FirstAtlanticCommerce\Gateway;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\AuthorizeRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\CreateCardRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\HostedPagePreprocessRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\HostedPageResultsRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\PurchaseRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\TransactionModificationRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\TransactionStatusRequest;
 use Omnipay\Tests\GatewayTestCase;
 
 class GatewayTest extends GatewayTestCase

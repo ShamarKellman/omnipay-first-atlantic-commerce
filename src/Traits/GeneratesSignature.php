@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Traits;
+namespace Omnipay\FirstAtlanticCommerce\Traits;
 
 trait GeneratesSignature
 {

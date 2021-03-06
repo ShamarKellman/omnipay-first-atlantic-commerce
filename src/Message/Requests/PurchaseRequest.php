@@ -1,11 +1,11 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests;
+namespace Omnipay\FirstAtlanticCommerce\Message\Requests;
 
-use Omnipay\OmnipayFirstAtlanticCommerce\Enums\TransactionCode;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\PurchaseResponse;
-use Omnipay\OmnipayFirstAtlanticCommerce\Traits\GeneratesSignature;
-use Omnipay\OmnipayFirstAtlanticCommerce\Traits\ParameterTrait;
+use Omnipay\FirstAtlanticCommerce\Enums\TransactionCode;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\PurchaseResponse;
+use Omnipay\FirstAtlanticCommerce\Traits\GeneratesSignature;
+use Omnipay\FirstAtlanticCommerce\Traits\ParameterTrait;
 use SimpleXMLElement;
 
 class PurchaseRequest extends AbstractRequest
@@ -13,7 +13,7 @@ class PurchaseRequest extends AbstractRequest
     use ParameterTrait;
     use GeneratesSignature;
 
-    protected string $requestName = 'AuthorizeRequest';
+    protected string $requestName = 'Authorize';
 
     /**
      * @param  SimpleXMLElement|string  $xml

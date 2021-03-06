@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Enums;
+namespace Omnipay\FirstAtlanticCommerce\Enums;
 
 use DASPRiD\Enum\AbstractEnum;
 

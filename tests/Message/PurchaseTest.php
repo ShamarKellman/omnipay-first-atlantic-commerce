@@ -1,10 +1,10 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Tests\Message;
+namespace Omnipay\FirstAtlanticCommerce\Tests\Message;
 
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\PurchaseRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\AuthorizeResponse;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\PurchaseResponse;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\PurchaseRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\AuthorizeResponse;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\PurchaseResponse;
 use Omnipay\Tests\TestCase;
 
 class PurchaseTest extends TestCase

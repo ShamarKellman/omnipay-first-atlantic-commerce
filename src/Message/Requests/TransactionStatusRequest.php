@@ -1,9 +1,11 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests;
+namespace Omnipay\FirstAtlanticCommerce\Message\Requests;
 
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\TransactionStatusResponse;
-use Omnipay\OmnipayFirstAtlanticCommerce\Traits\ParameterTrait;
+use Omnipay\Common\Exception\InvalidRequestException;
+use Omnipay\Common\Exception\InvalidResponseException;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\TransactionStatusResponse;
+use Omnipay\FirstAtlanticCommerce\Traits\ParameterTrait;
 use SimpleXMLElement;
 
 class TransactionStatusRequest extends AbstractRequest
@@ -14,6 +16,7 @@ class TransactionStatusRequest extends AbstractRequest
 
     /**
      * @param  SimpleXMLElement|string  $xml
+     * @throws InvalidResponseException
      * @return TransactionStatusResponse
      */
     protected function newResponse($xml): TransactionStatusResponse
@@ -23,7 +26,7 @@ class TransactionStatusRequest extends AbstractRequest
 
     /**
      * @return array
-     * @throws \Omnipay\Common\Exception\InvalidRequestException
+     * @throws InvalidRequestException
      */
     public function getData(): array
     {

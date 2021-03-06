@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses;
+namespace Omnipay\FirstAtlanticCommerce\Message\Responses;
 
 use \Omnipay\Common\Message\AbstractResponse as BaseAbstractResponse;
 use SimpleXMLElement;

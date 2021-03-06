@@ -1,9 +1,9 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce\Tests\Message;
+namespace Omnipay\FirstAtlanticCommerce\Tests\Message;
 
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\TransactionStatusRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Responses\TransactionStatusResponse;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\TransactionStatusRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Responses\TransactionStatusResponse;
 use Omnipay\Tests\TestCase;
 
 class TransactionStatusTest extends TestCase

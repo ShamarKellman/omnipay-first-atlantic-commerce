@@ -1,20 +1,20 @@
 <?php
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce;
+namespace Omnipay\FirstAtlanticCommerce;
 
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Message\NotificationInterface;
 use Omnipay\Common\Message\RequestInterface;
-use Omnipay\OmnipayFirstAtlanticCommerce\Enums\ModificationType;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\AuthorizeRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\CreateCardRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPagePreprocessRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\HostedPageResultsRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\PurchaseRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\TransactionModificationRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\TransactionStatusRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Message\Requests\UpdateCardRequest;
-use Omnipay\OmnipayFirstAtlanticCommerce\Traits\ParameterTrait;
+use Omnipay\FirstAtlanticCommerce\Enums\ModificationType;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\AuthorizeRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\CreateCardRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\HostedPagePreprocessRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\HostedPageResultsRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\PurchaseRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\TransactionModificationRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\TransactionStatusRequest;
+use Omnipay\FirstAtlanticCommerce\Message\Requests\UpdateCardRequest;
+use Omnipay\FirstAtlanticCommerce\Traits\ParameterTrait;
 
 /**
  * @method NotificationInterface acceptNotification(array $options = array())

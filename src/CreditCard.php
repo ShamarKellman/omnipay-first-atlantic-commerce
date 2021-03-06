@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Omnipay\OmnipayFirstAtlanticCommerce;
+namespace Omnipay\FirstAtlanticCommerce;
 
 use League\ISO3166\ISO3166;
 use Omnipay\Common\CreditCard as BaseCard;

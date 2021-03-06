@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Omnipay\\OmnipayFirstAtlanticCommerce\\": "src"
+            "Omnipay\\FirstAtlanticCommerce\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Omnipay\\OmnipayFirstAtlanticCommerce\\Tests\\": "tests"
+            "Omnipay\\FirstAtlanticCommerce\\Tests\\": "tests"
         }
     },
     "scripts": {
