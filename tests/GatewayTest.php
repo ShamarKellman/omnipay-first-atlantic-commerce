@@ -13,6 +13,7 @@ use Omnipay\FirstAtlanticCommerce\Message\Requests\HostedPageResultsRequest;
 use Omnipay\FirstAtlanticCommerce\Message\Requests\PurchaseRequest;
 use Omnipay\FirstAtlanticCommerce\Message\Requests\TransactionModificationRequest;
 use Omnipay\FirstAtlanticCommerce\Message\Requests\TransactionStatusRequest;
+use Omnipay\Omnipay;
 use Omnipay\Tests\GatewayTestCase;
 
 class GatewayTest extends GatewayTestCase
@@ -26,6 +27,13 @@ class GatewayTest extends GatewayTestCase
             ->setMerchantPassword('abcdefg')
             ->setAcquirerId(12345)
             ->setTestMode(true);
+    }
+
+    public function testGatewayInstantiated()
+    {
+        $gateway = Omnipay::create('FirstAtlanticCommerce');
+
+        $this->assertInstanceOf(Gateway::class, $gateway);
     }
 
     public function testGateCanBeInitialized(): void
