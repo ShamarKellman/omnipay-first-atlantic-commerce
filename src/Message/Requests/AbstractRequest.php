@@ -40,7 +40,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
     {
         $httpResponse = $this->httpClient->request(
             $this->getHttpMethod(),
-            $this->getEndpoint().'Request',
+            $this->getEndpoint(),
             ['Content-Type' => 'text/xml; charset=utf-8'],
             $this->xmlSerialize($data)
         );
@@ -77,7 +77,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
     protected function xmlSerialize(array $data, $xml = null): string
     {
         if (! $xml instanceof SimpleXMLElement) {
-            $xml = new SimpleXMLElement('<'. $this->requestName .' xmlns="'. $this->namespace .'" />');
+            $xml = new SimpleXMLElement('<'. $this->requestName .'Request xmlns="'. $this->namespace .'" />');
         }
 
         foreach ($data as $key => $value) {
