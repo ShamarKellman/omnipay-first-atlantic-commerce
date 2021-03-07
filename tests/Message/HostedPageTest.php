@@ -44,7 +44,7 @@ class HostedPageTest extends TestCase
         self::assertSame('AzXrogQb5E2aEJDWsyEaw2', $response->getToken());
         self::assertSame('Success', $response->getMessage());
         self::assertSame(
-            'https://ecm.firstatlanticcommerce.com/PGServiceXML/MerchantPages/pageSet/pageName/AzXrogQb5E2aEJDWsyEaw2',
+            'https://ecm.firstatlanticcommerce.com/MerchantPages/pageSet/pageName/AzXrogQb5E2aEJDWsyEaw2',
             $response->getRedirectUrl()
         );
     }
