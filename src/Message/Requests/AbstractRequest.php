@@ -3,8 +3,8 @@
 namespace Omnipay\FirstAtlanticCommerce\Message\Requests;
 
 use Omnipay\Common\CreditCard;
-use Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
 use Omnipay\Common\Exception\InvalidRequestException;
+use Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
 use Omnipay\Common\Message\ResponseInterface;
 use SimpleXMLElement;
 
