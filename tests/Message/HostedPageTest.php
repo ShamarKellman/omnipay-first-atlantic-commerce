@@ -27,6 +27,8 @@ class HostedPageTest extends TestCase
             'transactionCode' => TransactionCode::SINGLE_PASS + TransactionCode::REQUEST_TOKEN,
             'cardHolderResponseURL' => 'https://merchant/response/page.php',
             'transactionId' => '1234',
+            'pageSet' => 'pageSet',
+            'pageName' => 'pageName',
         ]);
     }
 
@@ -41,5 +43,9 @@ class HostedPageTest extends TestCase
         self::assertSame('0', $response->getCode());
         self::assertSame('AzXrogQb5E2aEJDWsyEaw2', $response->getToken());
         self::assertSame('Success', $response->getMessage());
+        self::assertSame(
+            'https://ecm.firstatlanticcommerce.com/MerchantPages/pageSet/pageName/AzXrogQb5E2aEJDWsyEaw2',
+            $response->getRedirectUrl()
+        );
     }
 }

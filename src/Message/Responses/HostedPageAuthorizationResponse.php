@@ -44,4 +44,11 @@ class HostedPageAuthorizationResponse extends AbstractResponse
     {
         return $this->data['SecurityToken'] ?? null;
     }
+
+    public function getRedirectUrl(): string
+    {
+        $url = preg_replace('/PGServiceXML\//', '', $this->request->getEndpoint());
+
+        return "{$url}MerchantPages/{$this->request->getPageSet()}/{$this->request->getPageName()}/{$this->getToken()}";
+    }
 }

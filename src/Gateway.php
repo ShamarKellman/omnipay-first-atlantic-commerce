@@ -3,6 +3,7 @@
 namespace Omnipay\FirstAtlanticCommerce;
 
 use Omnipay\Common\AbstractGateway;
+use Omnipay\Common\GatewayInterface;
 use Omnipay\Common\Message\NotificationInterface;
 use Omnipay\Common\Message\RequestInterface;
 use Omnipay\FirstAtlanticCommerce\Enums\ModificationType;
@@ -22,7 +23,7 @@ use Omnipay\FirstAtlanticCommerce\Traits\ParameterTrait;
  * @method RequestInterface completePurchase(array $options = array())
  * @method RequestInterface deleteCard(array $options = array())
  */
-class Gateway extends AbstractGateway
+class Gateway extends AbstractGateway implements GatewayInterface
 {
     use ParameterTrait;
 

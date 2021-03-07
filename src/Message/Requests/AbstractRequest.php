@@ -3,7 +3,7 @@
 namespace Omnipay\FirstAtlanticCommerce\Message\Requests;
 
 use Omnipay\Common\CreditCard;
-use \Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
+use Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\ResponseInterface;
 use SimpleXMLElement;
@@ -36,11 +36,16 @@ abstract class AbstractRequest extends BaseAbstractRequest
         return str_pad($amount, 12, '0', STR_PAD_LEFT);
     }
 
+    /**
+     * @param $data
+     * @return \Omnipay\Common\Message\ResponseInterface
+     * @throws \Exception
+     */
     public function sendData($data): ResponseInterface
     {
         $httpResponse = $this->httpClient->request(
             $this->getHttpMethod(),
-            $this->getEndpoint().'Request',
+            $this->requestEndpoint(),
             ['Content-Type' => 'text/xml; charset=utf-8'],
             $this->xmlSerialize($data)
         );
@@ -64,7 +69,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
         return $this->setParameter('card', $value);
     }
 
-    protected function getEndpoint(): string
+    public function getEndpoint(): string
     {
         return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
     }
@@ -74,10 +79,16 @@ abstract class AbstractRequest extends BaseAbstractRequest
         return str_pad(parent::getCurrencyNumeric(), 3, 0, STR_PAD_LEFT);
     }
 
+    /**
+     * @param  array  $data
+     * @param  null  $xml
+     * @return string
+     * @throws \Exception
+     */
     protected function xmlSerialize(array $data, $xml = null): string
     {
         if (! $xml instanceof SimpleXMLElement) {
-            $xml = new SimpleXMLElement('<'. $this->requestName .' xmlns="'. $this->namespace .'" />');
+            $xml = new SimpleXMLElement('<'. $this->requestDataType() .' xmlns="'. $this->namespace .'" />');
         }
 
         foreach ($data as $key => $value) {
@@ -94,5 +105,15 @@ abstract class AbstractRequest extends BaseAbstractRequest
         }
 
         return $xml->asXML();
+    }
+
+    public function requestDataType(): string
+    {
+        return $this->requestName . 'Request';
+    }
+
+    public function requestEndpoint(): string
+    {
+        return $this->getEndpoint() . $this->requestName;
     }
 }
