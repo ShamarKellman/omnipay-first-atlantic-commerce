@@ -44,4 +44,9 @@ class HostedPageAuthorizationResponse extends AbstractResponse
     {
         return $this->data['SecurityToken'] ?? null;
     }
+
+    public function getRedirectUrl(): string
+    {
+        return "{$this->request->getEndpoint()}MerchantPages/{$this->request->getPageSet()}/{$this->request->getPageName()}/{$this->getToken()}";
+    }
 }

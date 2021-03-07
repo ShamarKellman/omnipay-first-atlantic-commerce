@@ -69,7 +69,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
         return $this->setParameter('card', $value);
     }
 
-    protected function getEndpoint(): string
+    public function getEndpoint(): string
     {
         return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
     }

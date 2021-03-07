@@ -36,7 +36,7 @@ class GatewayTest extends GatewayTestCase
         $this->assertInstanceOf(Gateway::class, $gateway);
     }
 
-    public function testGateCanBeInitialized(): void
+    public function testGatewayCanBeInitialized(): void
     {
         self::assertEquals('First Atlantic Commerce.', $this->gateway->getName());
         self::assertEquals('FAC', $this->gateway->getShortName());
@@ -135,14 +135,20 @@ class GatewayTest extends GatewayTestCase
         self::assertSame(ModificationType::REVERSAL, $request->getData()['ModificationType']);
     }
 
+    /**
+     * @throws \Omnipay\Common\Exception\InvalidRequestException
+     */
     public function testHostedPage(): void
     {
+        /** @var HostedPagePreprocessRequest $request */
         $request = $this->gateway->hostedPage([
             'amount' => '10.00',
             'currency' => 'USD',
             'transactionId' => '1234',
             'transactionCode' => TransactionCode::SINGLE_PASS + TransactionCode::REQUEST_TOKEN,
             'cardHolderResponseURL' => 'https://merchant/response/page.php',
+            'pageSet' => 'pageSet',
+            'pageName' => 'pageName',
         ]);
 
         self::assertInstanceOf(HostedPagePreprocessRequest::class, $request);
@@ -150,6 +156,8 @@ class GatewayTest extends GatewayTestCase
         self::assertSame('840', $request->getData()['TransactionDetails']['Currency']);
         self::assertSame('https://merchant/response/page.php', $request->getData()['CardHolderResponseURL']);
         self::assertSame('136', $request->getData()['TransactionDetails']['TransactionCode']);
+        self::assertSame('pageSet', $request->getPageSet());
+        self::assertSame('pageName', $request->getPageName());
     }
 
     public function testHostedPageResult(): void

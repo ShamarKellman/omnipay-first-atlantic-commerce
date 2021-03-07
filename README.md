@@ -132,9 +132,12 @@ $response = $this->gateway->hostedPage([
     'transactionId' => '1234',
     'transactionCode' => TransactionCode::SINGLE_PASS + TransactionCode::REQUEST_TOKEN, //Use values based on requirements 
     'cardHolderResponseURL' => 'https://merchant/response/page.php',
+    'pageSet' => 'pageSetFromPanel',
+    'pageName' => 'pageNameFromPanel',
 ])->send();
 
 if ( $response->isSuccessful() ) {
+    $response->getRedirectUrl();
     $response->getToken(); //the single use token to build hosted page URL. See doc
 }
 else {

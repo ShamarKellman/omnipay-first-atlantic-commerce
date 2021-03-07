@@ -42,6 +42,8 @@ class HostedPagePreprocessRequest extends AbstractRequest
             'currency',
             'cardHolderResponseURL',
             'transactionCode',
+            'pageName',
+            'pageSet',
         );
 
         $transactionDetails = [
@@ -82,4 +84,25 @@ class HostedPagePreprocessRequest extends AbstractRequest
     {
         return $this->setParameter('transactionCode', $value);
     }
+
+    public function getPageSet()
+    {
+        return $this->getParameter('pageSet');
+    }
+
+    public function getPageName()
+    {
+        return $this->getParameter('pageName');
+    }
+
+    public function setPageSet(string $value): HostedPagePreprocessRequest
+    {
+        return $this->setParameter('pageSet', $value);
+    }
+
+    public function setPageName(string $value): HostedPagePreprocessRequest
+    {
+        return $this->setParameter('pageName', $value);
+    }
+
 }
