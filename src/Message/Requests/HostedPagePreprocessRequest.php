@@ -104,5 +104,4 @@ class HostedPagePreprocessRequest extends AbstractRequest
     {
         return $this->setParameter('pageName', $value);
     }
-
 }
