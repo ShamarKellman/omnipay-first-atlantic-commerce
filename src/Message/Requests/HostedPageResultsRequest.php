@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Omnipay\FirstAtlanticCommerce\Message\Requests;
 
 use Omnipay\Common\Exception\InvalidRequestException;
