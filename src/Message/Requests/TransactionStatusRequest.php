@@ -12,7 +12,7 @@ class TransactionStatusRequest extends AbstractRequest
 {
     use ParameterTrait;
 
-    protected string $requestName = 'TransactionStatusRequest';
+    protected string $requestName = 'TransactionStatus';
 
     /**
      * @param  SimpleXMLElement|string  $xml
