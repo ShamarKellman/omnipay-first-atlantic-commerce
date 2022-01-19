@@ -40,12 +40,10 @@ class GatewayTest extends GatewayTestCase
     {
         self::assertEquals('First Atlantic Commerce.', $this->gateway->getName());
         self::assertEquals('FAC', $this->gateway->getShortName());
-        self::assertArraySubset([
-            'merchantId' => 123456,
-            'merchantPassword' => 'abcdefg',
-            'acquirerId' => 12345,
-            'testMode' => true,
-        ], $this->gateway->getParameters());
+        self::assertEquals(123456,  $this->gateway->getParameters()['merchantId']);
+        self::assertEquals('abcdefg',  $this->gateway->getParameters()['merchantPassword']);
+        self::assertEquals(12345,  $this->gateway->getParameters()['acquirerId']);
+        self::assertTrue($this->gateway->getParameters()['testMode']);
     }
 
     public function testAuthorize(): void

@@ -11,18 +11,19 @@ Atlantic Commerce support for Omnipay.
 
 ## Support us
 
-We invest a lot of resources into creating opensource products.
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
-You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards
-on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
 You can install the package via composer:
 
+For PHP 8.0+
 ```bash
-composer require shamarkellman/omnipay-first-atlantic-commerce
+composer require shamarkellman/omnipay-first-atlantic-commerce "^2.0.0"
+```
+
+For PHP 7.4
+```bash
+composer require shamarkellman/omnipay-first-atlantic-commerce "^1.0.0"
 ```
 
 ## Usage

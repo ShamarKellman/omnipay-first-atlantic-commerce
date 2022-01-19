@@ -15,15 +15,15 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^8.0",
         "dasprid/enum": "^1.0.3",
-        "league/iso3166": "^3.0",
-        "omnipay/common": "^3.0",
+        "league/iso3166": "^4.0",
+        "omnipay/common": "^3.1",
         "ext-simplexml": "*"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.17",
-        "omnipay/tests": "^3.1"
+        "friendsofphp/php-cs-fixer": "^3.5",
+        "omnipay/tests": "^4.1"
     },
     "autoload": {
         "psr-4": {

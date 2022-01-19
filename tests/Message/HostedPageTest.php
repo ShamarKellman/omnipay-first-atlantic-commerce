@@ -14,7 +14,7 @@ class HostedPageTest extends TestCase
      */
     private HostedPagePreprocessRequest $request;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->request = new HostedPagePreprocessRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize([
